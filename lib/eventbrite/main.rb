@@ -4,7 +4,8 @@ require 'tzinfo'
 module Eventbrite
   EVENTBRITE_TIME_STRING = '%Y-%m-%d %H:%M:%S'
   # Sets up app to use an app key for interaction with API
-  def self.setup(app_key = "YmRmMmMxMjYzNDYy", debug = false)
+  # Get your own developer key at http://www.eventbrite.com/api/key
+  def self.setup(app_key = "API_KEY_REQUIRED", debug = false)
     @app_key = app_key
     @debug = debug
   end
@@ -17,7 +18,6 @@ module Eventbrite
   # @private
   # Makes HTTParty call
   def self.call(function, opts = {})
-    @app_key ||= "YmRmMmMxMjYzNDYy"
     opts[:app_key] = @app_key
     if opts[:user].is_a? Eventbrite::User 
       # Allow passing User object instead of user auth info.
